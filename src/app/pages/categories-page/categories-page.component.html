@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="row w-100">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <div>
+                <p class="p-0 m-0 title-section"><b>Administración de categorias</b></p>
+            </div>
+            <div class="py-4">
+                <button type="button" class="btn btn-primary" (click)="setAddCategoryState()">{{isAddingCategory ? 'Volver': 'Agregar Categoria'}}</button>
+            </div>
+        </div>
+    </div>
+    <div class="row w-100">
+        @if (categories && !isAddingCategory) {
+            <div class="col-12 d-flex justify-content-end align-items-center">
+                <button type="button" class="btn btn-outline-primary my-2" (click)="exportToXML()">
+                    <i class="fa-solid fa-download"></i>
+                </button>
+            </div>
+        }
+        <div class="col-12">
+            @if (categories && !isAddingCategory) {
+                <div class="table-container">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripción</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (category of categories; track $index) {
+                            <tr>
+                                <th scope="row">{{category.Name}}</th>
+                                <td>{{category.Description}}</td>
+                                <td>
+                                    <div class="d-flex justify-content-center align-items-center gap-1">
+                                        <button type="button" class="btn btn-primary" (click)="editCategory(category)" >
+                                            <i class="fa-regular fa-pen-to-square"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            @if (isAddingCategory) {
+                <app-categories-form></app-categories-form>
+            }
+        </div>
+    </div>
+</div>

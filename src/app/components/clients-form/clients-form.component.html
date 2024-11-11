@@ -1,0 +1,87 @@
+
+<div class="d-flex justify-content-center">
+    <div class="form-container w-100">
+        <div class="row">
+            <div class="col-1 d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-arrow-left cursor-pointer" (click)="cancel()"></i>
+            </div>
+            <div class="col-11">
+                <h4 class="text-center py-3">{{customer.customerId ? 'Editar Cliente' : 'Crear Nuevo Cliente'}}</h4>
+            </div>
+        </div>
+        @if (customer) {
+            <div class=" w-100">
+                <form #f="ngForm" class="form PrintArea py-4" (ngSubmit)="save()">
+                
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Nombre*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="customer!.Name" required
+                                #fullName="ngModel" name="fullName" maxLength="50" autocomplete="off" max="50" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': fullName.invalid && (fullName.dirty || fullName.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Apellido*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="customer!.LastName" required
+                                #lastname="ngModel" name="lastname" maxLength="50" autocomplete="off" max="50" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': lastname.invalid && (lastname.dirty || lastname.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Email*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="customer!.Email" required
+                                #email="ngModel" name="email" maxLength="250" autocomplete="off" max="250"  />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': email.invalid && (email.dirty || email.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Telefono*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="customer!.Phone" required
+                                #phone="ngModel" name="phone" maxLength="250" autocomplete="off" max="250"  />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': phone.invalid && (phone.dirty || phone.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Direccion*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="customer!.Address" required
+                                #address="ngModel" name="address" maxLength="250" autocomplete="off" max="250"  />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': address.invalid && (address.dirty || address.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row py-3">
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-danger m-auto w-100 form-btn" (click)="cancel()">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-primary m-auto w-100 form-btn" [disabled]="!f.valid" type="submit">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+</div>

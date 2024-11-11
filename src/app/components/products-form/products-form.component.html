@@ -1,0 +1,121 @@
+
+<div class="d-flex justify-content-center">
+    <div class="form-container w-100">
+        <div class="row">
+            <div class="col-1 d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-arrow-left cursor-pointer" (click)="cancel()"></i>
+            </div>
+            <div class="col-11">
+                <h4 class="text-center py-3">{{product?.productId ? 'Editar Producto' : 'Crear Nuevo Producto'}}</h4>
+            </div>
+        </div>
+        @if (product) {
+            <div class=" w-100">
+                <form #f="ngForm" class="form PrintArea py-4" (ngSubmit)="save()">
+                
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Nombre completo*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="product!.Name" required
+                                #fullName="ngModel" name="fullName" maxLength="50" autocomplete="off" max="50" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': fullName.invalid && (fullName.dirty || fullName.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Descripcion*</div>
+                        <div class="p-0 col-8">
+                            <textarea class="w-100 form-control mr-2" type="textarea" [(ngModel)]="product!.Description" required
+                                #description="ngModel" name="description" maxLength="250" autocomplete="off" max="250" ></textarea>
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': description.invalid && (description.dirty || description.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Precio*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="number" [(ngModel)]="product!.Price"
+                                #price="ngModel" required name="price" autocomplete="off" max="10000" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': price.invalid && (price.dirty || price.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Impuesto*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="number" [(ngModel)]="product!.Tax"
+                                #tax="ngModel" required name="tax" autocomplete="off" max="10000" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': tax.invalid && (tax.dirty || tax.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Es Activo</div>
+                        <div class="p-0 col-8">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" [(ngModel)]="product!.IsActive"
+                                    name="flexRadioDefault" id="flexRadioDefault1" [value]="true" checked>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                  Activo
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" [(ngModel)]="product!.IsActive"
+                                    name="flexRadioDefault" id="flexRadioDefault2" [value]="false">
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                  Inactivo
+                                </label>
+                              </div>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Categoria*</div>
+                        <div class="p-0 col-8">
+                            <select class="form-select rounded py-1 w-100" #category="ngModel" name="category" placeholder="select" required
+                                [(ngModel)]="product!.Category!.categoryId" name="cateogrySelected">
+                                @for (category of categories; track $index) {
+                                    <option [ngValue]="category.categoryId" >{{category.Name}}</option>
+                                }
+                            </select>
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': category.invalid && (category.dirty || category.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Cantidad disponible*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="number" [(ngModel)]="product!.Stock" 
+                                #availableQty="ngModel" required name="availableQty" max="100" min="1" required/>
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': availableQty.invalid && (availableQty.dirty || availableQty.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row py-3">
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-danger m-auto w-100 form-btn" (click)="cancel()">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-primary m-auto w-100 form-btn" [disabled]="!f.valid" type="submit">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+</div>

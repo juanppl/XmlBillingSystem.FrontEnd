@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Customers xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <Customer customerId="C001">
+        <Name>John</Name>
+        <LastName>Doe</LastName>
+        <Email>johndoe@example.com</Email>
+        <Phone>123-456-7890</Phone>
+        <Address>123 Main St, Anytown, USA</Address>
+        <Bills>
+            <Bill billId="B001" date="2023-10-01" referenceNumber="REF12345">
+                <TotalAmount>150.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P001">
+                            <Name>Product A</Name>
+                            <Description>High-quality electronic device</Description>
+                            <Price>50.00</Price>
+                            <Tax>5.00</Tax>
+                            <Stock>20</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA001">
+                                <Name>Electronics</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>50.00</Price>
+                        <Stock>10</Stock>
+                        <Subtotal>100.00</Subtotal>
+                    </BillItem>
+                    <BillItem>
+                        <Product productId="P001">
+                            <Name>Product A</Name>
+                            <Description>High-quality electronic device</Description>
+                            <Price>50.00</Price>
+                            <Tax>5.00</Tax>
+                            <Stock>20</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA001">
+                                <Name>Electronics</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>50.00</Price>
+                        <Stock>10</Stock>
+                        <Subtotal>100.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+            <Bill billId="B0011" date="2023-10-01" referenceNumber="REF12345">
+                <TotalAmount>150.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P001">
+                            <Name>Product A</Name>
+                            <Description>High-quality electronic device</Description>
+                            <Price>50.00</Price>
+                            <Tax>5.00</Tax>
+                            <Stock>20</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA001">
+                                <Name>Electronics</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>50.00</Price>
+                        <Stock>10</Stock>
+                        <Subtotal>100.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <Customer customerId="C002">
+        <Name>Jane</Name>
+        <LastName>Smith</LastName>
+        <Email>janesmith@example.com</Email>
+        <Phone>234-567-8901</Phone>
+        <Address>456 Elm St, Othertown, USA</Address>
+        <Bills>
+            <Bill billId="B002" date="2023-10-02" referenceNumber="REF12346">
+                <TotalAmount>200.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P002">
+                            <Name>Product B</Name>
+                            <Description>Essential home appliance</Description>
+                            <Price>100.00</Price>
+                            <Tax>10.00</Tax>
+                            <Stock>15</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA002">
+                                <Name>Home Appliances</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>100.00</Price>
+                        <Stock>5</Stock>
+                        <Subtotal>200.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <Customer customerId="C003">
+        <Name>Michael</Name>
+        <LastName>Johnson</LastName>
+        <Email>michaeljohnson@example.com</Email>
+        <Phone>345-678-9012</Phone>
+        <Address>789 Oak St, Thistown, USA</Address>
+        <Bills>
+            <Bill billId="B003" date="2023-10-03" referenceNumber="REF12347">
+                <TotalAmount>300.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P003">
+                            <Name>Product C</Name>
+                            <Description>Latest tech gadget</Description>
+                            <Price>150.00</Price>
+                            <Tax>15.00</Tax>
+                            <Stock>25</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA003">
+                                <Name>Gadgets</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>150.00</Price>
+                        <Stock>12</Stock>
+                        <Subtotal>300.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <!-- Additional customers -->
+    <Customer customerId="C004">
+        <Name>Emily</Name>
+        <LastName>Williams</LastName>
+        <Email>emilywilliams@example.com</Email>
+        <Phone>456-789-0123</Phone>
+        <Address>101 Pine St, Anycity, USA</Address>
+        <Bills>
+            <Bill billId="B004" date="2023-10-04" referenceNumber="REF12348">
+                <TotalAmount>400.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P004">
+                            <Name>Product D</Name>
+                            <Description>Popular kitchen appliance</Description>
+                            <Price>200.00</Price>
+                            <Tax>20.00</Tax>
+                            <Stock>30</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA004">
+                                <Name>Kitchen Appliances</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>200.00</Price>
+                        <Stock>15</Stock>
+                        <Subtotal>400.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <!-- Repeat similar structure for additional customers -->
+    <Customer customerId="C005">
+        <Name>David</Name>
+        <LastName>Brown</LastName>
+        <Email>davidbrown@example.com</Email>
+        <Phone>567-890-1234</Phone>
+        <Address>202 Maple St, Sometown, USA</Address>
+        <Bills>
+            <Bill billId="B005" date="2023-10-05" referenceNumber="REF12349">
+                <TotalAmount>500.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P005">
+                            <Name>Product E</Name>
+                            <Description>Stylish furniture item</Description>
+                            <Price>250.00</Price>
+                            <Tax>25.00</Tax>
+                            <Stock>10</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA005">
+                                <Name>Furniture</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>250.00</Price>
+                        <Stock>8</Stock>
+                        <Subtotal>500.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <!-- Continue adding more customers up to C020 -->
+    <Customer customerId="C006">
+        <Name>Sarah</Name>
+        <LastName>Davis</LastName>
+        <Email>sarahdavis@example.com</Email>
+        <Phone>678-901-2345</Phone>
+        <Address>303 Birch St, Yourtown, USA</Address>
+        <Bills>
+            <Bill billId="B006" date="2023-10-06" referenceNumber="REF12350">
+                <TotalAmount>600.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P006">
+                            <Name>Product F</Name>
+                            <Description>Latest smartphone model</Description>
+                            <Price>300.00</Price>
+                            <Tax>30.00</Tax>
+                            <Stock>5</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA006">
+                                <Name>Mobile Phones</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>300.00</Price>
+                        <Stock>3</Stock>
+                        <Subtotal>600.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+    
+    <Customer customerId="C007">
+        <Name>Linda</Name>
+        <LastName>Garcia</LastName>
+        <Email>lindagarcia@example.com</Email>
+        <Phone>789-012-3456</Phone>
+        <Address>404 Cedar St, Hertown, USA</Address>
+        <Bills>
+            <Bill billId="B007" date="2023-10-07" referenceNumber="REF12351">
+                <TotalAmount>700.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P007">
+                            <Name>Product G</Name>
+                            <Description>Comfortable sofa</Description>
+                            <Price>350.00</Price>
+                            <Tax>35.00</Tax>
+                            <Stock>4</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA007">
+                                <Name>Furniture</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>350.00</Price>
+                        <Stock>2</Stock>
+                        <Subtotal>700.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <Customer customerId="C008">
+        <Name>James</Name>
+        <LastName>Martinez</LastName>
+        <Email>jamesmartinez@example.com</Email>
+        <Phone>890-123-4567</Phone>
+        <Address>505 Spruce St, Nowhere, USA</Address>
+        <Bills>
+            <Bill billId="B008" date="2023-10-08" referenceNumber="REF12352">
+                <TotalAmount>800.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P008">
+                            <Name>Product H</Name>
+                            <Description>Outdoor grill</Description>
+                            <Price>400.00</Price>
+                            <Tax>40.00</Tax>
+                            <Stock>6</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA008">
+                                <Name>Outdoor Equipment</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>400.00</Price>
+                        <Stock>4</Stock>
+                        <Subtotal>800.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <Customer customerId="C009">
+        <Name>Patricia</Name>
+        <LastName>Hernandez</LastName>
+        <Email>patriciahernandez@example.com</Email>
+        <Phone>901-234-5678</Phone>
+        <Address>606 Ash St, Cityville, USA</Address>
+        <Bills>
+            <Bill billId="B009" date="2023-10-09" referenceNumber="REF12353">
+                <TotalAmount>900.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P009">
+                            <Name>Product I</Name>
+                            <Description>Luxury watch</Description>
+                            <Price>450.00</Price>
+                            <Tax>45.00</Tax>
+                            <Stock>8</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA009">
+                                <Name>Accessories</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>450.00</Price>
+                        <Stock>6</Stock>
+                        <Subtotal>900.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+
+    <Customer customerId="C010">
+        <Name>Robert</Name>
+        <LastName>Lopez</LastName>
+        <Email>robertlopez@example.com</Email>
+        <Phone>012-345-6789</Phone>
+        <Address>707 Willow St, Townsville, USA</Address>
+        <Bills>
+            <Bill billId="B010" date="2023-10-10" referenceNumber="REF12354">
+                <TotalAmount>1000.00</TotalAmount>
+                <BillItems>
+                    <BillItem>
+                        <Product productId="P010">
+                            <Name>Product J</Name>
+                            <Description>High-end laptop</Description>
+                            <Price>500.00</Price>
+                            <Tax>50.00</Tax>
+                            <Stock>5</Stock>
+                            <IsActive>true</IsActive>
+                            <Category categoryId="CA010">
+                                <Name>Computers</Name>
+                            </Category>
+                        </Product>
+                        <Quantity>2</Quantity>
+                        <Price>500.00</Price>
+                        <Stock>3</Stock>
+                        <Subtotal>1000.00</Subtotal>
+                    </BillItem>
+                </BillItems>
+            </Bill>
+        </Bills>
+    </Customer>
+</Customers>

@@ -1,0 +1,54 @@
+
+<div class="d-flex justify-content-center">
+    <div class="form-container w-100">
+        <div class="row">
+            <div class="col-1 d-flex justify-content-center align-items-center">
+                <i class="fa-solid fa-arrow-left cursor-pointer" (click)="cancel()"></i>
+            </div>
+            <div class="col-11">
+                <h4 class="text-center py-3">{{category?.categoryId ? 'Editar Categoria' : 'Crear Nueva Categoria'}}</h4>
+            </div>
+        </div>
+        @if (category) {
+            <div class=" w-100">
+                <form #f="ngForm" class="form PrintArea py-4" (ngSubmit)="save()">
+                
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Nombre completo*</div>
+                        <div class="p-0 col-8">
+                            <input class="w-100 form-control mr-2" type="text" [(ngModel)]="category!.Name" required
+                                #fullName="ngModel" name="fullName" maxLength="50" autocomplete="off" max="50" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': fullName.invalid && (fullName.dirty || fullName.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row">
+                        <div class="text-left p-0 col-4 title2 my-auto">Descripcion*</div>
+                        <div class="p-0 col-8">
+                            <textarea class="w-100 form-control mr-2" type="textarea" [(ngModel)]="category!.Description" required
+                                #description="ngModel" name="description" maxLength="250" autocomplete="off" max="250" ></textarea>
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': description.invalid && (description.dirty || description.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mb-3 p-0 row py-3">
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-danger m-auto w-100 form-btn" (click)="cancel()">
+                                Cancelar
+                            </button>
+                        </div>
+                        <div class="col-6 d-flex">
+                            <button class="btn btn-primary m-auto w-100 form-btn" [disabled]="!f.valid" type="submit">
+                                Guardar
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        }
+    </div>
+</div>
