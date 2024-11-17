@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { from, map, Observable, Subject, switchMap } from 'rxjs';
 import { parseStringPromise } from 'xml2js';
 import { Category } from '../models/Category';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CategoriesService {
   public getListOfCategories(): Observable<any> {
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'text/xml');
-    return this.http.get('assets/categories.xml', { headers: headers, responseType: 'text' })
+    return this.http.get(`${environment.api}Categories/get-list-of-categories`, { headers: headers, responseType: 'text' })
       .pipe(
         switchMap(response =>
           from(parseStringPromise(response, { strict: true, trim: true, explicitArray: false }))

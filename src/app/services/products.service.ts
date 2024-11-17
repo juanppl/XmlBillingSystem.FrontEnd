@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { from, map, Observable, Subject, switchMap } from 'rxjs';
 import { parseStringPromise } from 'xml2js';
 import { Product } from '../models/Product';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class ProductsService {
   public getListOfProducts(): Observable<any> {
     const _headers = new HttpHeaders();
     const headers = _headers.set('Content-Type', 'text/xml');
-    return this.http.get('assets/products.xml', { headers: headers, responseType: 'text' })
+    return this.http.get(`${environment.api}Products/get-list-of-products`, { headers: headers, responseType: 'text' })
       .pipe(
         switchMap(response =>
           from(parseStringPromise(response, { strict: true, trim: true, explicitArray: false }))
