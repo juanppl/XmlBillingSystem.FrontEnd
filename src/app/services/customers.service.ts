@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { from, map, Observable, Subject, switchMap } from 'rxjs';
-import { parseStringPromise } from 'xml2js';
+import { parseStringPromise, Builder } from 'xml2js';
 import { Customer } from '../models/Customer';
 import { environment } from '../../environments/environment';
 
@@ -13,6 +13,7 @@ export class CustomersService {
   public displayTable$ = new Subject<boolean>();
   public selectedCustomer$ = new Subject<Customer>();
   public viewCustomerBills$ = new Subject<Customer>();
+  public refreshTable$ = new Subject<void>();
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +27,6 @@ export class CustomersService {
         ),
         map(result => {
           result.Customers.Customer.forEach((customer: any) => {
-            console.log(customer);
             // Asegurar que 'customerId' siempre esté presente
             customer.customerId = customer.$.customerId;
         
@@ -65,4 +65,27 @@ export class CustomersService {
         })
       );
   }
+
+
+  public addOrEditCustomer(customer: Customer): Observable<any> {
+    const _headers = new HttpHeaders();
+    const headers = _headers.set('Content-Type', 'application/xml');
+    const builder = new Builder({ headless: true, renderOpts: { pretty: false } });
+    const xmlObj = {
+      Customer: {
+        $: { customerId: customer.customerId || 0 },
+        Name: customer.Name,
+        LastName: customer.LastName,
+        Email: customer.Email,
+        Phone: customer.Phone,
+        Address: customer.Address
+      }
+    };
+    return this.http.post(
+      `${environment.api}Billing/add-or-edit-customer`, 
+      builder.buildObject(xmlObj), 
+      { headers: headers }
+    );
+  }
+
 }

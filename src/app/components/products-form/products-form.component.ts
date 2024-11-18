@@ -58,43 +58,25 @@ export class ProductsFormComponent {
 
   public save(): void {
     this.isSaving = true;
-    if (this.product && this.product?.productId && this.product.productId != -1) {
-      this.editProduct(this.product);
-    } else {
-      this.addNewProduct(this.product!);
+    if (this.product) {
+      this.addOrEditProduct(this.product);
     }
   }
 
-  private addNewProduct(product: Product): void {
-    // this.productService.createProduct(product)
-    //   .subscribe({
-    //     next: () => {
-    //       this.isSaving = false;
-    //       this.productService.displayTable$.next(true);
-    //       this.productService.refreshTable$.next();
-    //       Swal.fire({
-    //         title: "Creado Exitoso!",
-    //         text: "Se ha creado el producto exitosamente!",
-    //         icon: "success"
-    //       });
-    //     }
-    //   });
-  }
-
-  private editProduct(product: Product): void {
-    // this.productService.editProduct(product)
-    //   .subscribe({
-    //     next: () => {
-    //       this.isSaving = false;
-    //       this.productService.displayTable$.next(true);
-    //       this.productService.refreshTable$.next();
-    //       Swal.fire({
-    //         title: "Editado Exitoso!",
-    //         text: "Se ha editado el producto exitosamente!",
-    //         icon: "success"
-    //       });
-    //     }
-    //   });
+  private addOrEditProduct(product: Product): void {
+    this.productService.addOrEditProduct(product)
+      .subscribe({
+        next: () => {
+          this.isSaving = false;
+          this.productService.displayTable$.next(true);
+          this.productService.refreshTable$.next();
+          Swal.fire({
+            title: product.productId ? "Editado Exitoso!": "Creado Exitoso!",
+            text: product.productId ? "Se ha editado el producto exitosamente!" : "Se ha creado el producto exitosamente!",
+            icon: "success"
+          });
+        }
+      });
   }
 
   public cancel(): void {

@@ -22,9 +22,14 @@ export class CategoriesPageComponent implements OnInit{
     private categoriesServices: CategoriesService
   ) {
     this.categoriesServices.displayTable$.subscribe(tableDisplayed => this.isAddingCategory = false);
+    this.categoriesServices.refreshTable$.subscribe(_ => this.getAllCategories());
   }
 
   ngOnInit(): void {
+    this.getAllCategories();
+  }
+
+  public getAllCategories(): void {
     this.categoriesServices.getListOfCategories()
       .subscribe({
         next: (categories) => {

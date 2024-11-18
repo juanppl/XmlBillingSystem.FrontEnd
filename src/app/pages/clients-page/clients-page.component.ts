@@ -26,9 +26,14 @@ export class ClientsPageComponent implements OnInit{
     private customersService: CustomersService
   ) {
     this.customersService.displayTable$.subscribe(tableDisplayed => this.isAddingCustomer = false);
+    this.customersService.refreshTable$.subscribe(_ => this.getListOfCustomers());
   }
 
   ngOnInit(): void {
+    this.getListOfCustomers();
+  }
+
+  public getListOfCustomers(): void {
     this.customersService.getListOfCustomers()
       .subscribe({
         next: (customers: any) => {
@@ -43,7 +48,6 @@ export class ClientsPageComponent implements OnInit{
   }
 
   public viewBills(customer: Customer): void {
-    console.log(customer);
     this.customersService.viewCustomerBills$.next(customer);
   }
 

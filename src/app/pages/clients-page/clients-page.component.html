@@ -38,13 +38,13 @@
                                 <td>{{customer.Email}}</td>
                                 <td>{{customer.Phone}}</td>
                                 <td>{{customer.Address}}</td>
-                                <td>{{customer.Bills.Bill.length > 0 ? 'Tiene facturas': 'No tiene facturas'}}</td>
+                                <td>{{customer.Bills && customer.Bills.Bill && customer.Bills.Bill.length > 0 ? 'Tiene facturas': 'No tiene facturas'}}</td>
                                 <td>
                                     <div class="d-flex justify-content-center align-items-center gap-1">
                                         <button type="button" class="btn btn-primary" (click)="editCustomer(customer)" >
                                             <i class="fa-regular fa-pen-to-square"></i>
                                         </button>
-                                        @if (customer.Bills.Bill.length > 0) {
+                                        @if (customer.Bills && customer.Bills.Bill && customer.Bills.Bill.length > 0) {
                                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
                                                 (click)="viewBills(customer)" >
                                                 <i class="fa-regular fa-eye"></i>

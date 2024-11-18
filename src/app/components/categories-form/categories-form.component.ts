@@ -5,6 +5,7 @@ import { Category } from '../../models/Category';
 import { Subscription } from 'rxjs';
 import { ProductsService } from '../../services/products.service';
 import { CategoriesService } from '../../services/categories.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-categories-form',
@@ -40,19 +41,25 @@ export class CategoriesFormComponent {
 
   public save(): void {
     this.isSaving = true;
-    if (this.category && this.category?.categoryId && this.category.categoryId != -1) {
-      this.editCategory(this.category);
-    } else {
-      this.addNewCategory(this.category!);
+    if (this.category) {
+      this.addOrEditCategory(this.category);
     }
   }
 
-  addNewCategory(category: Category) {
-    throw new Error('Method not implemented.');
-  }
-  
-  editCategory(category: Category) {
-    throw new Error('Method not implemented.');
+  addOrEditCategory(category: Category) {
+    this.categoriesService.addOrEditCategory(category)
+      .subscribe({
+        next: () => {
+          this.isSaving = false;
+          this.categoriesService.displayTable$.next(true);
+          this.categoriesService.refreshTable$.next();
+          Swal.fire({
+            icon: 'success',
+            title: category.categoryId ? 'Categoria Editada' : 'Categoria Agregada',
+            text: category.categoryId ? 'Se edito la categoria satisfactoriamente' : 'Se creo la nueva categoria satisfactoriamente'
+          });
+        }
+      });
   }
 
   public cancel(): void {

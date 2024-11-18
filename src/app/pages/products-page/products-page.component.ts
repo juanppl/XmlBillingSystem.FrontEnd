@@ -27,9 +27,14 @@ export class ProductsPageComponent implements OnInit {
     private categoriesServices: CategoriesService
   ) {
     this.productsService.displayTable$.subscribe(tableDisplayed => this.isAddingProduct = false);
+    this.productsService.refreshTable$.subscribe(_ => this.getProductsAndCategories());
   }
 
   ngOnInit(): void {
+    this.getProductsAndCategories();
+  }
+
+  private getProductsAndCategories() {
     const categoriesObservable = this.categoriesServices.getListOfCategories();
     const productsObservable = this.productsService.getListOfProducts();
     
