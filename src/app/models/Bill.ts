@@ -5,7 +5,7 @@ export interface Bills {
 }
 
 export interface Bill {
-    TotalAmount: string;
+    TotalAmount: number;
     BillItems: BillItems;
     billId: string;
     date: Date;
@@ -18,8 +18,8 @@ export interface BillItems {
 
 export interface BillItem {
     Product: Product;
-    Quantity: string;
-    Price: string;
-    Stock: string;
-    Subtotal: string;
+    Quantity: number;
+    Price: number;
+    Stock: number;
+    Subtotal: number;
 }

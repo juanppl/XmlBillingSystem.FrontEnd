@@ -1,1 +1,103 @@
-<p>bills-page works!</p>
+<div class="container">
+    <div class="row w-100">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <div>
+                <p class="p-0 m-0 title-section"><b>Creación de facturas</b></p>
+            </div>
+        </div>
+    </div>
+    <div class="row w-100 py-4">
+        <div class="col-12">
+            <form>
+                <div class="row">
+                    <div class="text-left p-0 col-1 title2 my-auto">Clientes*</div>
+                    <div class="p-0 col-2">
+                        <select class="form-select rounded py-1 w-100" #customer="ngModel" name="customer"
+                            placeholder="select" required [(ngModel)]="selectedCustomerId"
+                            name="customerSelected" (change)="setSelectedCustomer()" >
+                            @for (client of customers; track $index) {
+                            <option [ngValue]="client.customerId">{{client.Name}} {{client.LastName}}</option>
+                            }
+                        </select>
+                        <p class="invalid-feedback d-block p-0 m-0"
+                            [ngClass]="{'d-block': customer.invalid && (customer.dirty || customer.touched)}">
+                            Este campo es requerido
+                        </p>
+                    </div>
+                    <div class="col-2"></div>
+                    <div class="text-left p-0 col-1 title2 my-auto">Productos*</div>
+                    <div class="p-0 col-3 d-flex">
+                        <div>
+                            <select class="form-select rounded py-1 w-100" #prod="ngModel" name="prod"
+                                placeholder="select" required 
+                                [(ngModel)]="selectedProductId" name="prodSelected">
+                                @for (product of products; track $index) {
+                                <option [ngValue]="product.productId">{{product.Name}}</option>
+                                }
+                            </select>
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': prod.invalid && (prod.dirty || prod.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                        <div>
+                            <input class="w-100 form-control mr-2" type="number" [(ngModel)]="selectedQuantity" required
+                                    #quantity="ngModel" name="quantity" maxLength="50" autocomplete="off" min="0" max="50" />
+                            <p class="invalid-feedback d-block p-0 m-0"
+                                [ngClass]="{'d-block': quantity.invalid && (quantity.dirty || quantity.touched)}">
+                                Este campo es requerido
+                            </p>
+                        </div>
+                        <button type="button" class="btn btn-primary" 
+                            (click)="addProductToList()" >
+                            <i class="fa-regular fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="col-2">
+                        @if (selectedCustomer && listOfProductsSelected.length > 0) {
+                            <button type="button" class="btn btn-primary" (click)="generateBill()" >
+                                Generar factura
+                            </button>
+                        }
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-5">
+                    @if (selectedCustomer) {
+                        <p class="p-0 m-0 title-section py-2"><b>Cliente Seleccionado:</b></p>
+                        <p><b>Nombre:</b> {{selectedCustomer.Name}} {{selectedCustomer.LastName}}</p>
+                        <p><b>Email:</b> {{selectedCustomer.Email}}</p>
+                        <p><b>Direccion:</b> {{selectedCustomer.Address}}</p>
+                        <p><b>Telefono:</b> {{selectedCustomer.Phone}}</p>
+                    }
+                </div>
+                <div class="col-5">
+                    <p class="p-0 m-0 title-section py-2"><b>Productos:</b></p>
+                    @for (product of listOfProductsSelected; track $index) {
+                        <div class="d-flex align-items-center" style="gap: 20px;">
+                            <div>
+                                <p><b>Nombre:</b> {{product.Name}}</p>
+                                <p><b>Categoria:</b> {{product.Category?.Name}}</p>
+                                <p><b>Cantidad:</b> {{product.quantity}}</p>
+                            </div>
+                            <div>
+                                <p><b>Precio:</b> {{product.Price | currency}}</p>
+                                <p><b>Impuesto:</b> {{product.Tax | currency}}</p>
+                            </div>
+                            <div>
+                                <button type="button" class="btn btn-danger" 
+                                    (click)="deleteProductFromList(product)" >
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <hr>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

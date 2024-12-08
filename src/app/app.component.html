@@ -10,10 +10,10 @@
             <div class="modal-body">
                 @for (bill of customer?.Bills?.Bill; track $index) {
                     <ul>
-                        <li><b>Factura:</b> {{bill.billId}}, <b>Total:</b> {{bill.TotalAmount}}</li>
+                        <li><b>Factura:</b> {{bill.billId}}, <b>Total:</b> {{bill.TotalAmount | currency}}</li>
                         <ul>
                             @for (billItem of bill.BillItems.BillItem; track $index) {
-                                <li><b>Producto:</b> {{billItem.Product.Name}}, <b>Precio: </b> {{billItem.Price}}</li>
+                                <li><b>Producto:</b> {{billItem.Product.Name}}, <b>Precio: </b> {{billItem.Price | currency}}</li>
                             }
                         </ul>
                     </ul>

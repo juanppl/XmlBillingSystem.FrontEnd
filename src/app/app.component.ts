@@ -3,11 +3,12 @@ import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
 import { CustomersService } from './services/customers.service';
 import { Customer } from './models/Customer';
 import { Subscription } from 'rxjs';
+import { CurrencyPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [ ToolBarComponent],
+  imports: [ ToolBarComponent, CurrencyPipe],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

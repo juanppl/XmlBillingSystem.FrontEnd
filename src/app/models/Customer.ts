@@ -7,6 +7,6 @@ export interface Customer {
     Phone: string;
     Address: string;
     Bills: Bills;
-    customerId: string | null;
+    customerId: number | null;
 }
 

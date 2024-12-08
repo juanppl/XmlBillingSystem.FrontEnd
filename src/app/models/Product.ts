@@ -9,4 +9,5 @@ export interface Product {
     IsActive: boolean;
     Category: Category | null;
     productId: number | null;
+    quantity?: number;
 }
